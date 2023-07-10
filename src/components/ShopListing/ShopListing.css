@@ -7,10 +7,22 @@
   height: 80px;
   border: thin solid black;
   padding: 5px;
+
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .listing-container > :first-child {
   height: 80%;
+  
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .listing-container > * {

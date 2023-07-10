@@ -1,3 +1,4 @@
+import './CabbageCounter.css';
 
 interface CabbageCounterProps {
   count: number,
@@ -5,7 +6,7 @@ interface CabbageCounterProps {
 
 function CabbageCounter(props: CabbageCounterProps) {
   return (
-    <span>{props.count} cabbages</span>
+    <span className="cabbage-counter">{props.count} cabbages</span>
   );
 }
 

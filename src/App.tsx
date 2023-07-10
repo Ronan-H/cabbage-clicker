@@ -5,15 +5,14 @@ import { Cabbage } from './components/Cabbage';
 import { useState } from 'react';
 import { CabbageCounter } from './components/CabbageCounter/CabbageCounter';
 import { CabbageSeeds } from './components/ShopListing/CabbageSeeds';
+import { useGameStore } from './hooks';
+import { ShopListings } from './components/ShopListing/ShopListings';
 
 function App() {
-  const [ cabbageCount, setCabbageCount ] = useState<number>(0);
+  const numCabbages = useGameStore((state) => state.numCabbages);
+  const cabbageCounter = <CabbageCounter count={numCabbages} />;
 
-  function onCabbageClicked() {
-    setCabbageCount((prev) => prev + 1);
-  }
-
-  const cabbageCounter = <CabbageCounter count={cabbageCount} />;
+  const onCabbageClicked = useGameStore((state) => state.onCabbageClicked);
   const cabbage = <Cabbage onClick={onCabbageClicked} />;
 
   const cabbageSeeds = <CabbageSeeds 
@@ -25,9 +24,7 @@ function App() {
     <ColumnsLayout>
       <ClickerGrid heading={cabbageCounter} cabbage={cabbage} />
       <div />
-      <div>
-        {cabbageSeeds}
-      </div>
+      <ShopListings />
     </ColumnsLayout>
   ));
 }
