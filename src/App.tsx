@@ -1,9 +1,9 @@
 import './App.css';
-import ColumnsLayout from './components/ColumnsLayout';
-import ClickerGrid from './components/ClickerGrid';
-import Cabbage from './components/Cabbage';
+import { ColumnsLayout } from './components/ColumnsLayout';
+import { ClickerGrid } from './components/ClickerGrid';
+import { Cabbage } from './components/Cabbage';
 import { useState } from 'react';
-import CabbageCounter from './components/CabbageCounter';
+import { CabbageCounter } from './components/CabbageCounter/CabbageCounter';
 
 function App() {
   const [ cabbageCount, setCabbageCount ] = useState<number>(0);

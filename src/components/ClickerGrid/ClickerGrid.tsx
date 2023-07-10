@@ -14,4 +14,4 @@ function ClickerGrid(props: ClickerGridProps) {
   );
 }
 
-export default ClickerGrid;
+export { ClickerGrid };

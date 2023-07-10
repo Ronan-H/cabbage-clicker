@@ -11,4 +11,4 @@ function Cabbage(props: CabbageProps) {
   );
 }
 
-export default Cabbage;
+export { Cabbage }

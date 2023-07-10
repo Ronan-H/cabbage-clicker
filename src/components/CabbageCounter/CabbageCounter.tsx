@@ -1,5 +1,3 @@
-import cabbageImage from './cabbage.png';
-import './Cabbage.css';
 
 interface CabbageCounterProps {
   count: number,
@@ -11,4 +9,4 @@ function CabbageCounter(props: CabbageCounterProps) {
   );
 }
 
-export default CabbageCounter;
+export { CabbageCounter };

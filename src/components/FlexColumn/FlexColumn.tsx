@@ -12,4 +12,4 @@ function FlexColumn(props: FlexColumnProps) {
   );
 }
 
-export default FlexColumn;
+export { FlexColumn };
