@@ -2,14 +2,21 @@ import './App.css';
 import ColumnsLayout from './components/ColumnsLayout';
 import ClickerGrid from './components/ClickerGrid';
 import Cabbage from './components/Cabbage';
+import { useState } from 'react';
+import CabbageCounter from './components/CabbageCounter';
 
 function App() {
-  const heading = <div>HEADING</div>;
-  const cabbage = <Cabbage onClick={() => console.log('Clicked!')} />;
+  const [ cabbageCount, setCabbageCount ] = useState<number>(0);
+
+  function onCabbageClicked() {
+    setCabbageCount((prev) => prev + 1);
+  }
+
+  const cabbage = <Cabbage onClick={onCabbageClicked} />;
 
   return ((
     <ColumnsLayout>
-      <ClickerGrid heading={heading} cabbage={cabbage} />
+      <ClickerGrid heading={<CabbageCounter count={cabbageCount} />} cabbage={cabbage} />
       <div>COLUMN 2</div>
       <div>COLUMN 3</div>
     </ColumnsLayout>
