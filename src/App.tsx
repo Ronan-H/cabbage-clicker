@@ -15,11 +15,6 @@ function App() {
   const onCabbageClicked = useGameStore((state) => state.onCabbageClicked);
   const cabbage = <Cabbage onClick={onCabbageClicked} />;
 
-  const cabbageSeeds = <CabbageSeeds 
-    numOwned={0}
-    onClick={() => console.log('Cabbage seeds clicked!')}
-  />;
-
   return ((
     <ColumnsLayout>
       <ClickerGrid heading={cabbageCounter} cabbage={cabbage} />

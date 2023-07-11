@@ -1,7 +1,8 @@
+import { produce } from 'immer';
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-type ItemName = 'Cabbage Seeds';
+export type ItemName = 'Cabbage Seeds';
 
 interface ShopItem {
   name: ItemName
@@ -13,6 +14,7 @@ interface GameState {
   numCabbages: number
   clickMultiplier: number
   onCabbageClicked: () => void
+  onShopItemClicked: (itemName: ItemName) => void
   shopItems: ShopItem[]
 }
 
@@ -22,6 +24,18 @@ const useGameStore = create<GameState>()(
       numCabbages: 0,
       clickMultiplier: 1,
       onCabbageClicked: () => set((state) => ({ numCabbages: state.numCabbages + state.clickMultiplier })),
+      onShopItemClicked: (itemName: ItemName) => set((state) => {
+
+        return produce<GameState>(state, (draft) => {
+          const item = draft.shopItems.find((item) => item.name === itemName) as ShopItem;
+            
+          if (state.numCabbages >= item.currentPrice) {
+            // Item will be bought
+            draft.numCabbages -= item.currentPrice;
+            item.numOwned++;
+          }
+        });
+      }),
       shopItems: [
         {
           name: 'Cabbage Seeds',
