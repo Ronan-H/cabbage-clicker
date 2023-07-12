@@ -1,15 +1,12 @@
+import styled from 'styled-components';
 import './ColumnsLayout.css';
 
-interface ColumnsLayoutProps {
-  children: React.ReactNode,
-}
-
-function ColumnsLayout(props: ColumnsLayoutProps) {
-  return (
-    <div className="columns">
-      {props.children}
-    </div>
-  );
-}
+const ColumnsLayout = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow: hidden;
+`;
 
 export { ColumnsLayout };

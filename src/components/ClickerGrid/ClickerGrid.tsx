@@ -1,4 +1,13 @@
-import './ClickerGrid.css';
+import styled from 'styled-components';
+
+const ClickerGridDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  align-items: center;
+  justify-items: center;
+`;
 
 interface ClickerGridProps {
   heading: JSX.Element,
@@ -7,10 +16,10 @@ interface ClickerGridProps {
 
 function ClickerGrid(props: ClickerGridProps) {
   return (
-    <div className="clicker-grid">
+    <ClickerGridDiv>
       {props.heading}
       {props.cabbage}
-    </div>
+    </ClickerGridDiv>
   );
 }
 
