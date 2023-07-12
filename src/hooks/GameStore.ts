@@ -8,12 +8,14 @@ interface ShopItem {
   name: ItemName
   numOwned: number
   currentPrice: number
+  cpsIncrease: number
 }
 
 interface GameState {
   numCabbages: number
   clickMultiplier: number
   onCabbageClicked: () => void
+  changeNumCabbagesBy: (delta: number) => void
   onShopItemClicked: (itemName: ItemName) => void
   shopItems: ShopItem[]
 }
@@ -24,6 +26,7 @@ const useGameStore = create<GameState>()(
       numCabbages: 0,
       clickMultiplier: 1,
       onCabbageClicked: () => set((state) => ({ numCabbages: state.numCabbages + state.clickMultiplier })),
+      changeNumCabbagesBy: (delta) => set((state) => ({ numCabbages: state.numCabbages + delta })),
       onShopItemClicked: (itemName: ItemName) => set((state) => {
 
         return produce<GameState>(state, (draft) => {
@@ -41,6 +44,7 @@ const useGameStore = create<GameState>()(
           name: 'Cabbage Seeds',
           numOwned: 0,
           currentPrice: 25,
+          cpsIncrease: 1,
         }
       ]
     })
