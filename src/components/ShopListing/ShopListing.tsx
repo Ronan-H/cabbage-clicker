@@ -10,14 +10,8 @@ interface ShopListingProps {
 }
 
 function ShopListing(props: ShopListingProps) {
-  const onShopItemClicked = useGameStore((state) => state.onShopItemClicked);
-  
-  function onClick() {
-    onShopItemClicked('Cabbage Seeds');
-  }
-
   return (
-    <div className='listing-container' onClick={onClick}>
+    <div className='listing-container' onClick={props.onClick}>
       {props.imageNode}
       <div className='name-and-price'>
         <span className='listing-name'>{props.name}</span>

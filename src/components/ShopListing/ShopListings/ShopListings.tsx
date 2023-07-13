@@ -11,6 +11,7 @@ const listingMap = {
 
 function ShopListings(props: ShopListingsProps) {
   const shopItems = useGameStore((state) => state.shopItems);
+  const onShopItemClicked = useGameStore((state) => state.onShopItemClicked);
 
   return (
     <>{
@@ -20,7 +21,7 @@ function ShopListings(props: ShopListingsProps) {
           <ListingComponent
             key={item.name}
             numOwned={item.numOwned}
-            onClick={() => console.log('Clicked:', item.name)}
+            onClick={() => onShopItemClicked(item.name)}
           />
         );
       })
