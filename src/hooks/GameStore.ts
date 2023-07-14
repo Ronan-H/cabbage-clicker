@@ -2,7 +2,9 @@ import { produce } from 'immer';
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-export type ItemName = 'Cabbage Seeds';
+export type ItemName =
+  'Cabbage Seeds' |
+  'Farmer';
 
 interface ShopItem {
   name: ItemName
@@ -45,6 +47,12 @@ const useGameStore = create<GameState>()(
           numOwned: 0,
           currentPrice: 25,
           cpsIncrease: 1,
+        },
+        {
+          name: 'Farmer',
+          numOwned: 0,
+          currentPrice: 100,
+          cpsIncrease: 5,
         }
       ]
     })

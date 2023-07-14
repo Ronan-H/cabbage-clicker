@@ -1,20 +1,19 @@
 import { useGameStore } from '../../../hooks';
 import { CabbageSeeds } from '../CabbageSeeds';
+import { Farmer } from '../Farmer';
 import './ShopListings.css';
-
-interface ShopListingsProps {
-}
 
 const listingMap = {
   'Cabbage Seeds': CabbageSeeds,
+  'Farmer': Farmer,
 }
 
-function ShopListings(props: ShopListingsProps) {
+function ShopListings() {
   const shopItems = useGameStore((state) => state.shopItems);
   const onShopItemClicked = useGameStore((state) => state.onShopItemClicked);
 
   return (
-    <>{
+    <div>{
       shopItems.map((item) => {
         const ListingComponent = listingMap[item.name];
         return (
@@ -25,7 +24,7 @@ function ShopListings(props: ShopListingsProps) {
           />
         );
       })
-    }</>
+    }</div>
   );
 }
 
