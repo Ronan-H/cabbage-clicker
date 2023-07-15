@@ -23,6 +23,8 @@ interface GameState {
   shopItems: ShopItem[]
 }
 
+const PRICE_INCREASE_FACTOR = 1.2;
+
 const useGameStore = create<GameState>()(
   devtools(
     (set) => ({
@@ -39,6 +41,8 @@ const useGameStore = create<GameState>()(
             // Item will be bought
             draft.numCabbages -= item.currentPrice;
             item.numOwned++;
+
+            item.currentPrice = Math.round(item.currentPrice * PRICE_INCREASE_FACTOR);
           }
         });
       }),
@@ -46,7 +50,7 @@ const useGameStore = create<GameState>()(
         {
           name: 'Cabbage Seeds',
           numOwned: 0,
-          currentPrice: 25,
+          currentPrice: 15,
           cpsIncrease: 1,
         },
         {
