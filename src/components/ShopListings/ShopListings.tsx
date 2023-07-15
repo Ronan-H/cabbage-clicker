@@ -10,13 +10,20 @@ const ShopListingDiv = styled.div`
   color: black;
 `;
 
+const TransparentOverlay = styled.div`
+  opacity: 0.2;
+`;
+
 function ShopListings() {
   const shopItems = useGameStore((state) => state.shopItems);
   const onShopItemClicked = useGameStore((state) => state.onShopItemClicked);
+  const numCabbages = useGameStore((state) => state.numCabbages);
   
   return (
     <ShopListingDiv>{
-      shopItems.map((item) => (
+      shopItems.map((item) => {
+        const canAfford = (numCabbages >= item.currentPrice);
+        const shopListing = (
           <ShopListing
             key={item.name}
             name={item.name}
@@ -25,7 +32,10 @@ function ShopListings() {
             numOwned={item.numOwned}
             onClick={() => onShopItemClicked(item.name)}
           />
-        )
+        );
+
+        return canAfford ? shopListing : <TransparentOverlay>{shopListing}</TransparentOverlay>; 
+      }
       )
     }</ShopListingDiv>
   );
