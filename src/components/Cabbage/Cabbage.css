@@ -1,10 +1,6 @@
 
-.cabbage-image {
-  width: 40%;
-
-  animation: spin 15s linear infinite;
-  -webkit-animation: spin 15s linear infinite;
-  -moz-animation: spin 15s linear infinite;
+.container{
+  width: 50%;
 
   -webkit-user-drag: none;
   user-select: none;
@@ -13,10 +9,44 @@
   -ms-user-select: none;
 }
 
+.cabbage-image {
+  width: 100%;
+}
+
+.rotate-anim {
+  animation: spin 15s linear infinite;
+  -webkit-animation: spin 15s linear infinite;
+  -moz-animation: spin 15s linear infinite;
+}
+
+.hover-anim:hover {
+  animation: shrink 0.25s ease-out forwards;
+  -webkit-animation: shrink 0.25s ease-out forwards;
+  -moz-animation: shrink 0.25s ease-out forwards;
+}
+
+.hover-anim:not(:hover) {
+  animation: toFullScale 0.25s ease-out forwards;
+  -webkit-animation: toFullScale 0.25s ease-out forwards;
+  -moz-animation: toFullScale 0.25s ease-out forwards;
+}
+
+.click-anim:active {
+  animation: shrink 0.25s ease-out forwards;
+  -webkit-animation: shrink 0.25s ease-out forwards;
+  -moz-animation: shrink 0.25s ease-out forwards;
+}
+
+.click-anim:not(:active) {
+  animation: toFullScale 0.25s ease-out forwards;
+  -webkit-animation: toFullScale 0.25s ease-out forwards;
+  -moz-animation: toFullScale 0.25s ease-out forwards;
+}
+
 @keyframes spin { 
   100% { 
+      transform: rotate(360deg); 
       -webkit-transform: rotate(360deg); 
-      transform:rotate(360deg); 
   } 
 }
 @-webkit-keyframes spin { 
@@ -24,4 +54,26 @@
 }
 @-moz-keyframes spin { 
   100% { -moz-transform: rotate(360deg); } 
+}
+
+@keyframes shrink {
+  0% { 
+      transform: scale(1); 
+      -webkit-transform: scale(1); 
+  } 
+  to { 
+      transform: scale(0.85); 
+      -webkit-transform: scale(0.85); 
+  } 
+}
+
+@keyframes toFullScale {
+  0% { 
+      transform: scale(0.85); 
+      -webkit-transform: scale(0.85); 
+  } 
+  to{ 
+      transform: scale(1); 
+      -webkit-transform: scale(1); 
+  } 
 }

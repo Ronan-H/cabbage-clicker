@@ -7,7 +7,13 @@ interface CabbageProps {
 
 function Cabbage(props: CabbageProps) {
   return (
-    <img src={cabbageImage} onClick={props.onClick} className='cabbage-image' />
+    <div className="rotate-anim container">
+      <div className="hover-anim">
+        <div className="click-anim">
+          <img src={cabbageImage} onClick={props.onClick} className='cabbage-image' />
+        </div>
+      </div>
+    </div>
   );
 }
 
