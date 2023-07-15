@@ -1,15 +1,14 @@
 import { produce } from 'immer';
-import path from 'path';
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
 export type ItemName =
   'Cabbage Seeds' |
-  'Farmer';
+  'Farmer' |
+  'Bot';
 
 interface ShopItem {
   name: ItemName
-  imagePath: string
   numOwned: number
   currentPrice: number
   cpsIncrease: number
@@ -23,8 +22,6 @@ interface GameState {
   onShopItemClicked: (itemName: ItemName) => void
   shopItems: ShopItem[]
 }
-
-const SHOP_ITEM_IMAGES_DIR = '../../../assets/shop-item-images/';
 
 const useGameStore = create<GameState>()(
   devtools(
@@ -48,17 +45,21 @@ const useGameStore = create<GameState>()(
       shopItems: [
         {
           name: 'Cabbage Seeds',
-          imagePath: SHOP_ITEM_IMAGES_DIR + 'cabbage-seeds.png',
           numOwned: 0,
           currentPrice: 25,
           cpsIncrease: 1,
         },
         {
           name: 'Farmer',
-          imagePath: SHOP_ITEM_IMAGES_DIR + 'farmer.png',
           numOwned: 0,
           currentPrice: 100,
           cpsIncrease: 5,
+        },
+        {
+          name: 'Bot',
+          numOwned: 0,
+          currentPrice: 1000,
+          cpsIncrease: 100,
         }
       ]
     })

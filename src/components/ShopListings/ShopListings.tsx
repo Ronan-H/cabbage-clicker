@@ -21,7 +21,7 @@ function ShopListings() {
             key={item.name}
             name={item.name}
             price={item.currentPrice}
-            imageNode={<img src={itemImages[item.name]} alt={item.imagePath} />}
+            imageNode={<img src={itemImages[item.name]} alt={item.name} />}
             numOwned={item.numOwned}
             onClick={() => onShopItemClicked(item.name)}
           />
