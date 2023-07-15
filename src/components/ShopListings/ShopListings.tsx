@@ -1,29 +1,25 @@
-import { useGameStore } from '../../../hooks';
-import { CabbageSeeds } from '../CabbageSeeds';
-import { Farmer } from '../Farmer';
+import { useGameStore } from '../../hooks';
+import { ShopListing } from '../ShopListing/ShopListing';
 import './ShopListings.css';
-
-const listingMap = {
-  'Cabbage Seeds': CabbageSeeds,
-  'Farmer': Farmer,
-}
+import itemImages from '../../assets/shop-item-images';
 
 function ShopListings() {
   const shopItems = useGameStore((state) => state.shopItems);
   const onShopItemClicked = useGameStore((state) => state.onShopItemClicked);
-
+  
   return (
     <div>{
-      shopItems.map((item) => {
-        const ListingComponent = listingMap[item.name];
-        return (
-          <ListingComponent
+      shopItems.map((item) => (
+          <ShopListing
             key={item.name}
+            name={item.name}
+            price={item.currentPrice}
+            imageNode={<img src={itemImages[item.name]} alt={item.imagePath} />}
             numOwned={item.numOwned}
             onClick={() => onShopItemClicked(item.name)}
           />
-        );
-      })
+        )
+      )
     }</div>
   );
 }

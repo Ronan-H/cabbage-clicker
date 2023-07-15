@@ -3,7 +3,7 @@ import { ClickerGrid } from './components/ClickerGrid';
 import { Cabbage } from './components/Cabbage';
 import { CabbageCounter } from './components/CabbageCounter/CabbageCounter';
 import { useGameStore, useGameUpdater } from './hooks';
-import { ShopListings } from './components/ShopListing/ShopListings';
+import { ShopListings } from './components/ShopListings';
 
 function App() {
   const numCabbages = useGameStore((state) => state.numCabbages);
