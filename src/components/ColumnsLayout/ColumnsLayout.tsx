@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import './ColumnsLayout.css';
 
 const ColumnsLayout = styled.div`
   width: 100vw;

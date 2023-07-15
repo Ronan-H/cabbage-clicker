@@ -4,6 +4,8 @@ import { Cabbage } from './components/Cabbage';
 import { CabbageCounter } from './components/CabbageCounter/CabbageCounter';
 import { useGameStore, useGameUpdater } from './hooks';
 import { ShopListings } from './components/ShopListings';
+import { Background } from './components/Background';
+import { FontBase } from './components/FontBase';
 
 function App() {
   const numCabbages = useGameStore((state) => state.numCabbages);
@@ -15,11 +17,15 @@ function App() {
   useGameUpdater();
 
   return ((
-    <ColumnsLayout>
-      <ClickerGrid heading={cabbageCounter} cabbage={cabbage} />
-      <div />
-      <ShopListings />
-    </ColumnsLayout>
+    <FontBase>
+      <ColumnsLayout>
+        <Background>
+          <ClickerGrid heading={cabbageCounter} cabbage={cabbage} />
+        </Background>
+        <Background />
+        <ShopListings />
+      </ColumnsLayout>
+    </FontBase>
   ));
 }
 
