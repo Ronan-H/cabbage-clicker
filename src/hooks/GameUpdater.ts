@@ -23,7 +23,7 @@ function useGameUpdater() {
     }, UPDATE_INTERVAL);
 
     // Clean up
-    return () =>clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 }
 

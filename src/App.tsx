@@ -9,7 +9,8 @@ import { FontBase } from './components/FontBase';
 
 function App() {
   const numCabbages = useGameStore((state) => state.numCabbages);
-  const cabbageCounter = <CabbageCounter count={Math.floor(numCabbages)} />;
+  const cps = 0;
+  const cabbageCounter = <CabbageCounter count={Math.floor(numCabbages)} cps={cps} />;
 
   const onCabbageClicked = useGameStore((state) => state.onCabbageClicked);
   const cabbage = <Cabbage onClick={onCabbageClicked} />;

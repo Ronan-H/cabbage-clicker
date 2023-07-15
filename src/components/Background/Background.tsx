@@ -6,6 +6,7 @@ const Background = styled.div`
   height: 100%;
   background: url(${backgroundImage}) repeat-y top center;
   background-size: 100% 500px;
+  background-color: black;
 `;
 
 export { Background };
