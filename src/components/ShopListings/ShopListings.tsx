@@ -1,5 +1,5 @@
 import { useGameStore } from '../../hooks';
-import { ShopListing } from '../ShopListing/ShopListing';
+import { MemoizedShopListing, ShopListing } from '../ShopListing/ShopListing';
 import './ShopListings.css';
 import itemImages from '../../assets/shop-item-images';
 import backdrop from '../../assets/scroll-backdrop.gif';
@@ -24,7 +24,7 @@ function ShopListings() {
       shopItems.map((item) => {
         const canAfford = (numCabbages >= item.currentPrice);
         const shopListing = (
-          <ShopListing
+          <MemoizedShopListing
             key={item.name}
             name={item.name}
             price={item.currentPrice}
